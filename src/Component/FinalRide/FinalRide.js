@@ -1,20 +1,14 @@
 import React, { useState, Component } from 'react';
 import { useParams } from 'react-router-dom';
 import Fakedata from '../../../src/Component/Fakedata';
-import './FinalRide.css'
-import GoogleMapReact from 'google-map-react';
-
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
+import './FinalRide.css';
+import gmap from '../../../src/Component/Image/Map.png'
 
 const FinalRide = () => {
     const { id } = useParams();
     const first4 = Fakedata.slice(0, 4);
     const [vehicles, setvehicles] = useState(first4);
-    center: {
-        lat = 59.95,
-            lng = 30.33
-    }
-    zoom: 11
+    
     if (vehicles[0].id === id) {
         return vehicles[id].Image
     }
@@ -36,18 +30,8 @@ const FinalRide = () => {
                     </div>
                 </form>
             </div>
-            <div style={{ height: '100vh', width: '100%' }}>
-                <GoogleMapReact
-                    bootstrapURLKeys={{ key: "sha512-Io55IuQY3kydzHtbGvQya3H+KorS/M9rSNyfCGCg9WZ4pyT/lCxIlpJgG1GXW/PswzC84Tr2fBYi+7+jFVQQBw==" }}
-                    defaultCenter={this.props.center}
-                    defaultZoom={this.props.zoom}
-                >
-                    <AnyReactComponent
-                        lat={59.955413}
-                        lng={30.337844}
-                        text="My Marker"
-                    />
-                </GoogleMapReact>
+            <div>
+                <img src={gmap}></img>
             </div>
         </div>
     );
