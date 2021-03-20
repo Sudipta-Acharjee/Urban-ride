@@ -1,0 +1,23 @@
+.Header nav{
+    text-align: center;
+    background-color:lightpink;
+    font-size: 20px;
+    
+   
+}
+.Header h3{
+    text-align: center;
+    margin: 20px;
+    display: flex;
+}
+.Header a{
+    text-decoration: none;
+    margin-right: 20px;
+    padding:5px;
+}
+.Header button{
+    padding:5px 25px;
+    background-color:antiquewhite;
+    margin-bottom: 10px;
+    border-radius:5px;
+}

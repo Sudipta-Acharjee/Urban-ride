@@ -1,0 +1,27 @@
+.cart img {
+   height:70%;
+   margin-left: 30%;
+}
+.cart{
+    display: flex;
+    margin-left: 10%;
+    margin-top:5%;
+}
+.form img{
+    height: 110px;
+    width:100px;
+    position:center;
+}
+.form{
+    border:1px solid black;
+    text-align:center;
+    width:270px;
+}
+.first{
+    border:1px solid blue;
+    border-radius: 5px;
+}
+.second{
+    border:1px solid green;
+    border-radius: 5px;
+}
