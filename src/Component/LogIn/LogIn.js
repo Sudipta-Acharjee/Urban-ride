@@ -9,13 +9,14 @@ import { UserContext } from '../../App';
 const LogIn = () => {
     const [loggedInUser, setloggedInUser] = useContext(UserContext)
     const [newUser, setNewUser] = useState(true);
-    const history= useHistory();
-    const location= useLocation
+    const history = useHistory();
+    const location = useLocation
     const { from } = location.state || { from: { pathname: "/" } };
     const [user, setUser] = useState({
         isSignIn: false,
         name: '',
         email: '',
+        password: ''
     })
     if (firebase.apps.length === 0) {
         firebase.initializeApp(firebaseConfig);
@@ -57,6 +58,7 @@ const LogIn = () => {
         }
         if (isFieldValid) {
             const newUserInfo = { ...user };
+            console.log(newUserInfo)
             newUserInfo[e.target.name] = e.target.value;
             setUser(newUserInfo);
         }
@@ -69,7 +71,7 @@ const LogIn = () => {
                     newUserInfo.error = '';
                     newUserInfo.success = true;
                     setUser(newUserInfo);
-                    updateUserName(user.name)
+                    // updateUserName(user.name)
                     history.replace(from);
                 })
                 .catch((error) => {
@@ -78,7 +80,7 @@ const LogIn = () => {
                     console.log(errorMessage);
                 });
         }
-        if (!newUser & user.email && user.password) {
+        if (!newUser && user.email && user.password) {
             firebase.auth().signInWithEmailAndPassword(user.email, user.password)
                 .then(res => {
                     const newUserInfo = { ...user };
@@ -86,7 +88,7 @@ const LogIn = () => {
                     newUserInfo.success = true;
                     setUser(newUserInfo);
                     console.log('sign in user info', res.user);
-                    // history.replace(from);
+                    history.replace(from);
                 })
                 .catch((error) => {
                     var errorCode = error.code;
@@ -96,17 +98,17 @@ const LogIn = () => {
         }
         e.preventDefault();
     }
-    const updateUserName = Name => {
-        const user = firebase.auth().currentUser;
+    // const updateUserName = Name => {
+    //     const user = firebase.auth().currentUser;
 
-        user.updateProfile({
-            displayName: Name,
-        }).then(function () {
-            console.log('user name updated sucessfully');
-        }).catch(function (error) {
-            console.log(error);
-        });
-    }
+    //     user.updateProfile({
+    //         displayName: Name,
+    //     }).then(function () {
+    //         console.log('user name updated sucessfully');
+    //     }).catch(function (error) {
+    //         console.log(error);
+    //     });
+    // }
     return (
         <div >
             <div className="Header">
@@ -125,7 +127,7 @@ const LogIn = () => {
 
                     <form onSubmit={handleSubmit}>
                         <h3>Create an account</h3>
-                        {newUser && <input type="text" onBlur={handleBlur} placeholder="Name" />}
+                        {newUser && <input type="text" name={loggedInUser.name} onBlur={handleBlur} placeholder="Name" />}
                         <br />
                         <input type="text" name="email" onBlur={handleBlur} placeholder="Email" required />
                         <br />

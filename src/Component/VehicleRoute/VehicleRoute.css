@@ -2,17 +2,27 @@
     height: 75%;
     width: 100%;
     margin-left: 70px;
-    margin-top:100px;
+    margin-top: 100px;
 }
 
 .fullInfo {
     display: flex;
 }
-.formInfo{
-   margin-top:100px;
-   margin-left: 30px;
-   border:1px solid lightslategray;
-   padding:30px;
-   width: 70%;
-   color:blueviolet;
+
+.formInfo {
+    margin-top: 100px;
+    margin-left: 30px;
+    border: 1px solid lightslategray;
+    padding: 30px;
+    width: 70%;
+    color: blueviolet;
+}
+
+label {
+    display: block;
+    font: 1rem 'Fira Sans', sans-serif;
+}
+
+input, label {
+    margin: .4rem 0;
 }
