@@ -71,7 +71,6 @@ const LogIn = () => {
                     newUserInfo.error = '';
                     newUserInfo.success = true;
                     setUser(newUserInfo);
-                    // updateUserName(user.name)
                     history.replace(from);
                 })
                 .catch((error) => {
@@ -98,17 +97,7 @@ const LogIn = () => {
         }
         e.preventDefault();
     }
-    // const updateUserName = Name => {
-    //     const user = firebase.auth().currentUser;
-
-    //     user.updateProfile({
-    //         displayName: Name,
-    //     }).then(function () {
-    //         console.log('user name updated sucessfully');
-    //     }).catch(function (error) {
-    //         console.log(error);
-    //     });
-    // }
+    
     return (
         <div >
             <div className="Header">
